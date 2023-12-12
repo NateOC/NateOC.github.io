@@ -3,6 +3,7 @@ html body {
   width: 100%;
   background-color: #eadBC8;
   scroll-behavior: smooth;
+  margin: 0;
 
 }
 
@@ -114,7 +115,7 @@ section * {
       hsl(344deg 0% 21%) 58%,
       hsl(344deg 0% 15%) 69%,
       hsl(344deg 0% 10%) 82%,
-      hsl(0deg 0% 4%) 50%), url("https://www.cambridgema.gov/-/media/Images/communicationsoffice/Harvard_KyleKlein_DJI_0276.jpg?mw=1920");
+      hsl(0deg 0% 4%) 100%) 50%, url("https://www.cambridgema.gov/-/media/Images/communicationsoffice/Harvard_KyleKlein_DJI_0276.jpg?mw=1920");
   font-weight: bold;
 
 }
