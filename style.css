@@ -1,0 +1,120 @@
+html body {
+  height: 100%;
+  width: 100%;
+  background-color: #eadBC8;
+  scroll-behavior: smooth;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #0a570a;
+  font-family: 'Poppins', sans-serif;
+}
+
+p {
+  font-size: 1rem;
+  color: #0F2C59;
+  font-family: 'Poppins', sans-serif;
+  flex: 1;
+  overflow-wrap: break-word;
+}
+
+main {
+  height: 100%;
+  background-image: url("");
+  background-size: cover;
+}
+
+
+
+.fancy {
+  text-align: center;
+  height: 100%;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  flex: 1;
+}
+
+.fancy:hover {
+  background-color: #d7b793;
+  border-bottom: solid #0a570a 2px;
+}
+
+
+
+a {
+  text-decoration: none;
+  color: #0F2C59;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  flex: 0 0 150px;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  position: sticky;
+  top: -2.5px;
+  background-color: #DAC0A3;
+}
+
+section {
+  padding-top: 4rem;
+  height: 50rem;
+  width: 100%;
+  margin-bottom: 5rem;
+  overflow-y: hidden;
+  overflow-wrap: break-word;
+  /* border-bottom: dotted black 2px; */
+}
+
+section * {
+  margin: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 3rem;
+  
+}
+
+#top {
+  padding: 0;
+  background-image: linear-gradient(10deg,
+      hsl(0deg 0% 100%) 0%,
+      hsl(344deg 0% 93%) 6%,
+      hsl(344deg 0% 85%) 10%,
+      hsl(344deg 0% 78%) 14%,
+      hsl(344deg 0% 71%) 17%,
+      hsl(344deg 0% 64%) 20%,
+      hsl(344deg 0% 58%) 23%,
+      hsl(344deg 0% 51%) 27%,
+      hsl(344deg 0% 45%) 31%,
+      hsl(344deg 0% 38%) 36%,
+      hsl(344deg 0% 32%) 42%,
+      hsl(344deg 0% 26%) 49%,
+      hsl(344deg 0% 21%) 58%,
+      hsl(344deg 0% 15%) 69%,
+      hsl(344deg 0% 10%) 82%,
+      hsl(0deg 0% 4%) 50%), url("https://www.cambridgema.gov/-/media/Images/communicationsoffice/Harvard_KyleKlein_DJI_0276.jpg?mw=1920");
+  font-weight: bold;
+
+}
