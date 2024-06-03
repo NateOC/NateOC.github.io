@@ -1,124 +1,163 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+ </head>
+ <body>
+
     <h1>
-        Rock Paper Scissors Game
+        Rock Paper Scissors Game:
     </h1>
+    <h2>
+        Click one of these buttons to play a round with your choice.
+    </h2>
+    <h3 id = 'score'>   </h3>
 
-<script>
+    <div id = "result"></div>
+    <button id = "btnr"> Rock </button>
+    <button id = "btnp"> Paper </button>
+    <button id = "btns"> Scissors</button>
+    <script>
     
-//     
-//     getComputerChoice {
-//         generate random number between 0 and 3:
-//             math random multiplied by 3
-//   
-//         if number  < 1
-//             log rock
-//         if number  >1 and is  <2
-//             log paper
-//         if number  > 2
-//             log scissors
-//     }
-//
-    function getComputerChoice() {
-        var random = Math.random() * 3;
-        // console.log(random); testing random value
-        if(random < 1 )
-        {
-            return "rock";
-        }
+        //     
+        //     getComputerChoice {
+        //         generate random number between 0 and 3:
+        //             math random multiplied by 3
+        //   
+        //         if number  < 1
+        //             log rock
+        //         if number  >1 and is  <2
+        //             log paper
+        //         if number  > 2
+        //             log scissors
+        //     }
+        //
+            function getComputerChoice() {
+                var random = Math.random() * 3;
+                // console.log(random); testing random value
+                if(random < 1 )
+                {
+                    return "rock";
+                }
+        
+                if(random > 1 && random < 2)
+                {
+                    return "paper";
+                }
+        
+                if(random > 2){
+                    return "scissors";
+                }
+         }
+                var humanScore = 0;
+                var compScore = 0;
+        // play() {
+        //     prompt user to choose rock paper or scissors
+        //     generate random computer choice
+        //     use a bunch of if statements to see who wins based of computer and human choice
+        //     log result of match
+        //     log score
+        
+        // }
 
-        if(random > 1 && random < 2)
-        {
-            return "paper";
-        }
+        // creating result div
 
-        if(random > 2){
-            return "scissors";
-        }
- }
-        var humanScore = 0;
-        var compScore = 0;
-// play() {
-//     prompt user to choose rock paper or scissors
-//     generate random computer choice
-//     use a bunch of if statements to see who wins based of computer and human choice
-//     log result of match
-//     log score
+                function playRound(HumanChoice, compChoice) {
+                   
+                    
+                    if(compChoice == "scissors" && HumanChoice == "rock")
+                    { 
+                        humanScore++;
+                    }
 
-// }
-        function playRound(HumanChoice, compChoice) {
-           
+                    else if(compChoice == "paper" && HumanChoice == "rock")
+                    {
+                        compScore++;
+                    }
+
+                    if(compChoice == "scissors" && HumanChoice == "paper")
+                    {
+                        compScore++;
+                    }
+                    else if(compChoice == "rock" && HumanChoice == "paper")
+                    {
+                        humanScore++;
+                    }
+
+                    if(compChoice == "rock" && HumanChoice == "scissors")
+                    {
+                        compScore++;
+                    }
+                    else if(compChoice == "paper" && HumanChoice == "scissors")
+                    {
+                        humanScore++;
+                    }
+
+            const score = document.querySelector("h3");
+            const scoreH = document.createElement("h3");
+            score.innerHTML = "Your Score: " + humanScore + " Computer Score: " + compScore;
             
-            if(compChoice == "scissors" && HumanChoice == "rock")
-            {
-                console.log("You Win!");
-                humanScore++;
-            }
-            else if(compChoice == "rock" && HumanChoice == "rock")
-            {
-                console.log("You Tied");
-            }
-            else if(compChoice == "paper" && HumanChoice == "rock")
-            {
-                console.log("Computer Wins");
-                compScore++;
-            }
-            if(compChoice == "scissors" && HumanChoice == "paper")
-            {
-                console.log("Computer Wins!");
-                compScore++;
-            }
-            else if(compChoice == "rock" && HumanChoice == "paper")
-            {
-                console.log("You Win");
-                humanScore++;
-            }
-            else if(compChoice == "paper" && HumanChoice == "paper")
-            {
-                console.log("You Tied");
-            }
-            if(compChoice == "scissors" && HumanChoice == "scissors")
-            {
-                console.log("You Tied");
-            }
-            else if(compChoice == "rock" && HumanChoice == "scissors")
-            {
-                console.log("Computer Wins");
-                compScore++;
-            }
-            else if(compChoice == "paper" && HumanChoice == "scissors")
-            {
-                console.log("You Win!");
-                humanScore++;
-            }
-            console.log("Your Score: " + humanScore + " Computer Score: " + compScore)
-    }
-// playGame(){
-//     for loop that goes five times
-//         play a round
-//     check score using if 
-//         log win lose or tie
-//      reset score
-// }
-    function playGame()
-    {
-        for(f = 0; f < 5; f++)
-        {
-            const humanChoice = prompt("Choose 'rock' 'paper' or 'scissors'");
-            const compChoice = getComputerChoice();
-            // console.log(compChoice); //testing computer choice
-            // console.log(HumanChoice);//testing human choice 
-            playRound(humanChoice, compChoice);
-        }
-        if(humanScore == compScore)
-            console.log("You tied!")
-        else if(humanScore > compScore)
-            console.log("You won the Game!")
-        else   
-            console.log("Sorry, you lost!")
-        humanScore = 0;
-        compScore = 0;
-    }
-        </script>
+            const result = document.querySelector("div");
 
-<button onclick="playGame()"> "Click here to Play" </button>
+            if(humanScore == 5)
+            {
+                const results = document.createElement("h2");
+                results.textContent = "You Win! Refresh to play again."
+                result.appendChild(results);
+            }
+            if(compScore == 5)
+            {
+                const results = document.createElement("h2");
+                results.textContent = "Computer Wins! Refresh to play again."
+                result.appendChild(results);
+            }
+            }
+            
+
+            const btnr = document.querySelector("#btnr");
+            btnr.onclick = () => playRound("rock", getComputerChoice());
+
+            const btnp = document.querySelector("#btnp");
+            btnp.onclick = () => playRound("paper", getComputerChoice());
+
+            const btns = document.querySelector("#btns");
+            btns.onclick = () => playRound("scissors", getComputerChoice());
+
+        // playGame(){
+        //     for loop that goes five times
+        //         play a round
+        //     check score using if 
+        //         log win lose or tie
+        //      reset score
+        // }
+                // playGame()
+                // {
+                //     const humanChoice = prompt("Choose 'rock' 'paper' or 'scissors'");
+                //     const compChoice = getComputerChoice();
+                //     // console.log(compChoice); //testing computer choice
+                //     // console.log(HumanChoice);//testing human choice 
+                //     playRound(humanChoice, compChoice);
+                // // if(humanScore == compScore)
+                // //     console.log("You tied!")
+                // // else if(humanScore > compScore)
+                // //     console.log("You won the Game!")
+                // // else   
+                // //     console.log("Sorry, you lost!")
+                // // humanScore = 0;
+                // // compScore = 0;
+                // }
+                </script>
+
+
+
+ </body>
+ </html>   
+
+
+
         
 
