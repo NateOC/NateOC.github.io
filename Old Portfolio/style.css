@@ -223,6 +223,6 @@ ul {
     padding-left: 0rem;
   }
   aside {
-    translateX(-150%);
+    transform: translateX(-150%);
   }
 }
