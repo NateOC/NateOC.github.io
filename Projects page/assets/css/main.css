@@ -1780,6 +1780,22 @@ input, select, textarea {
 
 		}
 
+/* Force thumbnail sizing for images that use the helper class */
+img.thumb {
+	width: 400px !important;
+	height: 325px !important;
+	max-width: none !important;
+	object-fit: cover !important;
+	display: block !important;
+}
+
+@media screen and (max-width: 480px) {
+	img.thumb {
+		width: 140px !important;
+		height: 105px !important;
+	}
+}
+
 /* Section/Article */
 
 	section.special, article.special {
@@ -2572,7 +2588,7 @@ input, select, textarea {
 		-webkit-flex-wrap: wrap;
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
-		postiion: relative;
+		position: relative;
 		margin: -2.5em 0 0 -2.5em;
 	}
 

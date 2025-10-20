@@ -4156,3 +4156,27 @@ input, select, textarea {
 		}
 
 	}
+
+/* Thumbnail helper class -------------------------------------------------- */
+
+/*
+  Use by adding class="thumb" to an <img> element.
+  Default size: 200x150px (landscape thumbnail). Uses object-fit to preserve
+  coverage. On very small screens the thumbnail will scale down to fit.
+*/
+
+img.thumb {
+	display: block; /* remove inline gaps when used in flows */
+	width: 400px;
+	height: 400px;
+	max-width: 100%; /* ensure it never overflows its container */
+	object-fit: cover; /* fill the box while preserving aspect ratio */
+	border-radius: 4px; /* subtle rounding, optional */
+}
+
+@media screen and (max-width: 480px) {
+	img.thumb {
+		width: 140px;
+		height: 105px;
+	}
+}
