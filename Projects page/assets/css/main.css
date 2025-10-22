@@ -1789,6 +1789,25 @@ img.thumb {
 	display: block !important;
 }
 
+/* Center and make videos responsive inside article blocks */
+article video,
+.article video,
+article .video,
+.article .video video {
+	display: block;
+	margin: 0 auto; /* centers the video */
+	max-width: 100%;
+	height: auto;
+}
+
+/* If you want videos to fill a box use the .cover variant */
+article .video.cover video,
+article video.cover {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 @media screen and (max-width: 480px) {
 	img.thumb {
 		width: 140px !important;
