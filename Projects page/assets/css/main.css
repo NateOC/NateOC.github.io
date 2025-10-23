@@ -1796,8 +1796,8 @@ article .video,
 .article .video video {
 	display: block;
 	margin: 0 auto; /* centers the video */
-	max-width: 100%;
-	height: auto;
+	width: 100%;
+	height: auto; /* scale to fit container width */
 }
 
 /* If you want videos to fill a box use the .cover variant */
@@ -3396,11 +3396,12 @@ article video.cover {
 	}
 
 		.features article {
-			padding: 1.75em 1.75em 0.1em 1.75em ;
+			padding: 1.75em 1.75em 1.75em 1.75em ; /* give bottom padding so content stays inside */
 			background-color: #b4b7ca;
 			border-radius: 5px;
 			margin: 1.5em 3em 1.5em 0;
 			width: calc(50% - 1.5em);
+			min-height: 360px; /* ensure space for media + text so background covers content */
 		}
 
 			.features article:nth-child(2n) {
@@ -3417,6 +3418,19 @@ article video.cover {
 				width: calc(100% + 3.5em);
 			}
 
+			/* Ensure videos inside features have bottom spacing and are contained */
+			.features article video {
+				display: block;
+				max-width: 100%;
+				margin: 0 0 1em 0; /* gap below video */
+				width: 100%;
+				height: auto; /* let videos scale naturally unless targeted */
+			}
+
+			.features article p {
+				margin-bottom: 0.75em; /* small gap after paragraphs so text doesn't touch edge */
+			}
+
 				.features article .image img {
 					border-radius: 5px 5px 0 0;
 					width: 100%;
@@ -3427,6 +3441,23 @@ article video.cover {
 			.features article {
 				margin: 1em 2em 1em 0;
 				width: calc(50% - 1em);
+				min-height: 320px;
+			}
+
+			/* targeted override for specific feature video (see .target class) */
+			.features article video.target {
+				height: 240px;
+				width: 100%;
+				object-fit: cover;
+			}
+
+			/* Strongly target the cover+target video to avoid being collapsed by
+			   other cover rules. This ensures the engine-view video is visible. */
+			.features article video.cover.target {
+				display: block !important;
+				height: 240px !important;
+				width: 100% !important;
+				object-fit: cover !important;
 			}
 
 		}
@@ -3434,9 +3465,10 @@ article video.cover {
 		@media screen and (max-width: 736px) {
 
 			.features article {
-				padding: 1.5em 1.5em 0.1em 1.5em ;
+				padding: 1.5em 1.5em 1.25em 1.5em ;
 				margin: 0.875em 1.75em 0.875em 0;
 				width: calc(50% - 0.875em - 1px);
+				min-height: 260px;
 			}
 
 				.features article .image {
@@ -3444,6 +3476,19 @@ article video.cover {
 					margin-left: -1.5em;
 					margin-top: -1.5em;
 					width: calc(100% + 3em);
+				}
+
+				.features article video.target {
+					height: 160px;
+					width: 100%;
+					object-fit: cover;
+				}
+
+				.features article video.cover.target {
+					display: block !important;
+					height: 160px !important;
+					width: 100% !important;
+					object-fit: cover !important;
 				}
 
 		}
