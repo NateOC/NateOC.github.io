@@ -2917,14 +2917,41 @@ article video.cover {
 			}
 
 			#header .logo .symbol {
-				margin-right: 0.65em;
+					margin-right: 0.65em;
+				width: 2.25em;
+				height: 2.25em;
+				/* center contents */
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
 			}
 
 				#header .logo .symbol img {
-					display: block;
-					width: 2em;
-					height: 2em;
+						display: block;
+					/* keep the original fixed size so the logo matches the old appearance */
+					width: 2.25em;
+					height: 2.25em;
+					object-fit: contain;
+					/* project pages have light headers; invert the white SVG so it's visible */
+					filter: invert(1) contrast(1.05);
+					margin: 0;
+					/* nudge the SVG slightly left and up because the artwork is visually off-center */
+					transform: translate(-0.08em, -0.06em);
 				}
+
+/* Project pages: circular black border for the header logo symbol */
+#header .logo .symbol {
+	border-radius: 50%;
+	border: 2px solid #000; /* black circular border */
+	overflow: hidden;
+	display: inline-block;
+}
 
 		#header nav {
 			position: fixed;
