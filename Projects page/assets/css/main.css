@@ -1780,13 +1780,12 @@ input, select, textarea {
 
 		}
 
-/* Force thumbnail sizing for images that use the helper class */
+/* Make thumbnails fill their container */
 img.thumb {
-	width: 400px !important;
-	height: 325px !important;
-	max-width: none !important;
-	object-fit: cover !important;
-	display: block !important;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
 }
 
 /* Center and make videos responsive inside article blocks */
@@ -1806,13 +1805,6 @@ article video.cover {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-}
-
-@media screen and (max-width: 480px) {
-	img.thumb {
-		width: 140px !important;
-		height: 105px !important;
-	}
 }
 
 /* Section/Article */
@@ -2626,7 +2618,14 @@ article video.cover {
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
 		position: relative;
-		margin: -2.5em 0 0 -2.5em;
+		margin: -1.25em 0 0 -1.25em;
+		width: 100%;
+		/* Allow tiles to span the full screen instead of being constrained */
+		max-width: none;
+		box-sizing: border-box;
+		padding: 0 1.25em;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 		.tiles article {
@@ -2635,11 +2634,15 @@ article video.cover {
 			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
-			width: calc(33.33333% - 2.5em);
-			margin: 2.5em 0 0 2.5em;
+			width: calc(33.33333% - 1.25em);
+			margin: 1.25em 0 0 1.25em;
+			box-sizing: border-box;
+			/* Keep tiles square at larger widths */
+			aspect-ratio: 1/1;
+			overflow: hidden;
 		}
 
-			.tiles article > .image {
+			.tiles article span.image {
 				-moz-transition: -moz-transform 0.5s ease;
 				-webkit-transition: -webkit-transform 0.5s ease;
 				-ms-transition: -ms-transform 0.5s ease;
@@ -2651,9 +2654,11 @@ article video.cover {
 				overflow: hidden;
 			}
 
-				.tiles article > .image img {
+				.tiles article span.image img {
 					display: block;
 					width: 100%;
+					height: 100%;
+					object-fit: cover;
 				}
 
 				.tiles article > .image:before {
@@ -2782,19 +2787,19 @@ article video.cover {
 				background-color: #8499e7;
 			}
 
-			body:not(.is-touch) .tiles article:hover > .image {
+			body:not(.is-touch) .tiles article:hover span.image {
 				-moz-transform: scale(1.1);
 				-webkit-transform: scale(1.1);
 				-ms-transform: scale(1.1);
 				transform: scale(1.1);
 			}
 
-				body:not(.is-touch) .tiles article:hover > .image:before {
+				body:not(.is-touch) .tiles article:hover span.image:before {
 					background-color: #333333;
 					opacity: 0.35;
 				}
 
-				body:not(.is-touch) .tiles article:hover > .image:after {
+				body:not(.is-touch) .tiles article:hover span.image:after {
 					opacity: 0;
 				}
 
@@ -2842,6 +2847,15 @@ article video.cover {
 				.tiles article {
 					width: calc(50% - 2.5em);
 					margin: 2.5em 0 0 2.5em;
+					/* Revert to flexible height on narrower screens */
+					aspect-ratio: auto;
+				}
+
+				.tiles article span.image img {
+					/* Keep previous smaller-screen behavior: fixed image height */
+					width: 100%;
+					height: 300px;
+					object-fit: cover;
 				}
 
 		}
@@ -3368,7 +3382,7 @@ article video.cover {
 
 	#wrapper > * > .inner {
 		width: 100%;
-		max-width: 68em;
+		max-width: 85em;
 		margin: 0 auto;
 		padding: 0 2.5em;
 	}
