@@ -29,6 +29,22 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+	.article-img {
+		display: block;
+		width: 100%;
+		height: auto;
+		max-width: 100%;
+		margin-bottom: 1.5em;
+	}
+
+.features article video {
+				display: block;
+				max-width: 100%;
+				margin: 0 0 1em 0; /* gap below video */
+				width: 100%;
+				height: auto; /* let videos scale naturally unless targeted */
+			}
+
 body {
 	line-height: 1;
 }
